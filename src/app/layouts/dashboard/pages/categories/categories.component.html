@@ -1,0 +1,37 @@
+<form [formGroup]="categoriesForm" class="mb-5">
+  <mat-form-field>
+    <mat-label>Nombre</mat-label>
+    <input formControlName="name" matInput />
+    <mat-hint>Debe contener al menos 3 caracteres</mat-hint>
+    <button (click)="onAddProduct()" matSuffix mat-icon-button>
+      <mat-icon>add</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <div class="my-5">
+    <hr />
+  </div>
+
+  @for (control of productsControl.controls; track $index) {
+
+  <mat-form-field>
+    <mat-label>Nombre de producto</mat-label>
+    <input [formControl]="getControl($index)" matInput />
+    <!--
+      primary - color primario
+      accent - color secundario
+      warn - color para los errores
+
+    -->
+    <button
+      color="warn"
+      (click)="deleteControl($index)"
+      matSuffix
+      mat-icon-button
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-form-field>
+  }
+</form>
+<pre>{{ categoriesForm.value | json }}</pre>
