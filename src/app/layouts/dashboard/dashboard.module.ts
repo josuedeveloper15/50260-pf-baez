@@ -7,6 +7,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { UsersModule } from './pages/users/users.module';
 import { CategoriesModule } from './pages/categories/categories.module';
+import { PipesModule } from './pages/pipes/pipes.module';
 
 @NgModule({
   declarations: [DashboardComponent],
@@ -18,6 +19,7 @@ import { CategoriesModule } from './pages/categories/categories.module';
     MatIconModule,
     UsersModule,
     CategoriesModule,
+    PipesModule,
   ],
   exports: [DashboardComponent],
 })
