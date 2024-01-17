@@ -1,8 +1,9 @@
-<p>{{ user | fullName }}</p>
+<p [user]="user" appResaltado color="red">{{ user | fullName }}</p>
 
-<p>{{ today | date : "long" }}</p>
+<p appResaltado>{{ today | date : "long" }}</p>
 
-<p>{{ today | date | uppercase }}</p>
-<p>{{ "Hola mundo" | uppercase }}</p>
+<p *appRepetir="10">{{ today | date | uppercase }}</p>
 
-<p>{{ price | currency : "ARS" }}</p>
+<p appResaltado>{{ "Hola mundo" | uppercase }}</p>
+
+<p *ngFor="let numero of [1, 2, 3, 4, 5]">{{ price | currency : "ARS" }}</p>
