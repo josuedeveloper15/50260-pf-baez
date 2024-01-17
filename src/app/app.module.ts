@@ -9,6 +9,8 @@ import { registerLocaleData } from '@angular/common';
 
 import es from '@angular/common/locales/es';
 import esAR from '@angular/common/locales/es-AR';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { MY_USER_TOKEN } from './core/injection-tokens';
 
 registerLocaleData(es);
 registerLocaleData(esAR);
@@ -25,6 +27,20 @@ registerLocaleData(esAR);
     {
       provide: LOCALE_ID,
       useValue: 'es-AR',
+    },
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: {
+        appearance: 'outline',
+      },
+    },
+    {
+      provide: MY_USER_TOKEN,
+      useValue: 'ldsjdm348342kjewkjksfdmsakjdsad',
+    },
+    {
+      provide: 'API_URL',
+      useValue: 'http://localhost:5000/',
     },
   ],
   bootstrap: [AppComponent],

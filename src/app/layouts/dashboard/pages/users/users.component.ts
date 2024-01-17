@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { User } from './models';
+import { UsersService } from '../../../../core/services/users.service';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -25,6 +26,8 @@ export class UsersComponent {
       role: 'USER',
     },
   ];
+
+  constructor(private usersService: UsersService) {}
 
   onUserSubmitted(ev: User): void {
     // this.dataSource.push(ev);

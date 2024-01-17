@@ -12,6 +12,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UsersService } from '../../../../core/services/users.service';
+import { UsersMockService } from '../../../../core/services/users-mock.service';
+import { MY_USER_TOKEN } from '../../../../core/injection-tokens';
 @NgModule({
   declarations: [UsersComponent, UserFormComponent],
   imports: [
@@ -24,5 +27,20 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
   ],
   exports: [UsersComponent],
+  providers: [
+    // UsersService,
+    {
+      provide: MY_USER_TOKEN,
+      useValue: 'ldsjdm348342kjewkjksfdmsakjdsad',
+    },
+    {
+      provide: 'API_URL',
+      useValue: 'http://localhost:5000/',
+    },
+    // {
+    //   provide: UsersService,
+    //   useClass: UsersMockService,
+    // },
+  ],
 })
 export class UsersModule {}
