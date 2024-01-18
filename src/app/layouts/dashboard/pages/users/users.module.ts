@@ -29,14 +29,6 @@ import { MY_USER_TOKEN } from '../../../../core/injection-tokens';
   exports: [UsersComponent],
   providers: [
     // UsersService,
-    {
-      provide: MY_USER_TOKEN,
-      useValue: 'ldsjdm348342kjewkjksfdmsakjdsad',
-    },
-    {
-      provide: 'API_URL',
-      useValue: 'http://localhost:5000/',
-    },
     // {
     //   provide: UsersService,
     //   useClass: UsersMockService,
