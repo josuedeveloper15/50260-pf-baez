@@ -15,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UsersService } from '../../../../core/services/users.service';
 import { UsersMockService } from '../../../../core/services/users-mock.service';
 import { MY_USER_TOKEN } from '../../../../core/injection-tokens';
+import { MatIconModule } from '@angular/material/icon';
 @NgModule({
   declarations: [UsersComponent, UserFormComponent],
   imports: [
@@ -24,6 +25,7 @@ import { MY_USER_TOKEN } from '../../../../core/injection-tokens';
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
+    MatIconModule,
     ReactiveFormsModule,
   ],
   exports: [UsersComponent],

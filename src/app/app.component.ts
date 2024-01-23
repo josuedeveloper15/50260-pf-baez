@@ -10,19 +10,15 @@ import { Observable } from 'rxjs';
 export class AppComponent {
   title = '50260-pf-baez';
 
-  // isLoading = false;
-
-  isLoading$: Observable<boolean>;
+  isLoading = false;
 
   constructor(private loadingService: LoadingService) {
-    this.isLoading$ = this.loadingService.isLoading$;
     this.loadingService.isLoading$.subscribe({
-      next: (v) => console.log(v),
+      next: (v) => {
+        setTimeout(() => {
+          this.isLoading = v;
+        });
+      },
     });
-    // this.loadingService.isLoading$.subscribe({
-    //   next: (value) => {
-    //     this.isLoading = value;
-    //   },
-    // });
   }
 }
