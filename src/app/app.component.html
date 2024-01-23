@@ -1,5 +1,6 @@
 <!-- LOADING SPINNER -->
-<div class="app-loading" *ngIf="isLoading">
+<p>{{ isLoading$ | async | json }}</p>
+<div class="app-loading" *ngIf="isLoading$ | async">
   <mat-spinner></mat-spinner>
 </div>
 <!-- LOADING SPINNER -->
