@@ -10,7 +10,10 @@ import { CategoriesModule } from './pages/categories/categories.module';
 import { PipesModule } from './pages/pipes/pipes.module';
 import { RxjsExampleModule } from './pages/rxjs-example/rxjs-example.module';
 import { RxjsIntroduccionModule } from './pages/rxjs-introduccion/rxjs-introduccion.module';
-
+import { RouterModule } from '@angular/router';
+import { HomeComponent } from './pages/home/home.component';
+import { UsersComponent } from './pages/users/users.component';
+import { MatListModule } from '@angular/material/list';
 @NgModule({
   declarations: [DashboardComponent],
   imports: [
@@ -24,6 +27,22 @@ import { RxjsIntroduccionModule } from './pages/rxjs-introduccion/rxjs-introducc
     PipesModule,
     RxjsExampleModule,
     RxjsIntroduccionModule,
+    MatListModule,
+    // dashboard
+    RouterModule.forChild([
+      {
+        path: 'home',
+        component: HomeComponent,
+      },
+      {
+        path: 'users',
+        component: UsersComponent,
+      },
+      {
+        path: '**',
+        redirectTo: 'home',
+      },
+    ]),
   ],
   exports: [DashboardComponent],
 })

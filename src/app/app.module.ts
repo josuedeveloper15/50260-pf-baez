@@ -22,7 +22,6 @@ registerLocaleData(esAR);
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    DashboardModule,
     MatProgressSpinnerModule,
   ],
   providers: [

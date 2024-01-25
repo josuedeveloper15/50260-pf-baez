@@ -2,14 +2,26 @@
   <!-- SIDEBAR -->
   <!-- SIDEBAR -->
   <!-- SIDEBAR -->
-  <mat-drawer #drawer class="example-sidenav" mode="side">
-    <p>Auto-resizing sidenav</p>
-    @if (showFiller) {
-    <p>Lorem, ipsum dolor sit amet consectetur.</p>
-    }
-    <button (click)="showFiller = !showFiller" mat-raised-button>
-      Toggle extra text
-    </button>
+  <mat-drawer #drawer class="dashboard-sidebar" mode="side">
+    <mat-nav-list>
+      <a
+        #homeLink="routerLinkActive"
+        routerLinkActive
+        [activated]="homeLink.isActive"
+        routerLink="home"
+        mat-list-item
+        >Inicio</a
+      >
+      <a
+        #usersLink="routerLinkActive"
+        routerLinkActive
+        [activated]="usersLink.isActive"
+        routerLink="users"
+        mat-list-item
+        >Usuarios</a
+      >
+      <a (click)="logout()" mat-list-item>Cerrar sesion</a>
+    </mat-nav-list>
   </mat-drawer>
   <!-- SIDEBAR -->
   <!-- SIDEBAR -->
@@ -50,10 +62,11 @@
     <!-- TOOLBAR -->
     <!-- TOOLBAR -->
     <div class="p-3">
+      <router-outlet></router-outlet>
       <!-- <app-rxjs-introduccion></app-rxjs-introduccion> -->
       <!-- <app-rxjs-example></app-rxjs-example> -->
       <!-- <app-pipes></app-pipes> -->
-      <app-users></app-users>
+      <!-- <app-users></app-users> -->
       <!-- <app-categories></app-categories> -->
     </div>
   </div>

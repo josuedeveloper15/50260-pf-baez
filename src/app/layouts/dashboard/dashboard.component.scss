@@ -1,3 +1,14 @@
+@use "@angular/material" as mat;
+
 .dashboard-container {
   height: 100vh;
+}
+
+.dashboard-sidebar {
+  width: 200px;
+}
+
+.is-active {
+  // color: var(--mat-stepper-header-edit-state-icon-background-color);
+  color: mat.get-color-from-palette(mat.$green-palette, 800);
 }

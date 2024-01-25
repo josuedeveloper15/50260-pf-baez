@@ -24,7 +24,6 @@ export class UsersComponent implements OnInit {
 
   getPageData(): void {
     this.loadingService.setIsLoading(true);
-
     forkJoin([
       this.usersService.getRoles(),
       this.usersService.getUsers(),
