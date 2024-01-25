@@ -3,6 +3,7 @@ import { User } from './models';
 import { UsersService } from '../../../../core/services/users.service';
 import { LoadingService } from '../../../../core/services/loading.service';
 import { forkJoin } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -15,8 +16,11 @@ export class UsersComponent implements OnInit {
 
   constructor(
     private usersService: UsersService,
-    private loadingService: LoadingService
-  ) {}
+    private loadingService: LoadingService,
+    private route: ActivatedRoute
+  ) {
+    console.log(this.route.snapshot.queryParams);
+  }
 
   ngOnInit(): void {
     this.getPageData();

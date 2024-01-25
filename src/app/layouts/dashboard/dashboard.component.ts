@@ -15,6 +15,10 @@ export class DashboardComponent {
     // /dashboard/users
     // this.router.navigate(['users'], { relativeTo: this.route })
     localStorage.removeItem('access-token');
-    this.router.navigate(['auth', 'login']);
+    this.router.navigate(['auth', 'login'], {
+      // queryParams: {
+      //   hola: 'mundo',
+      // },
+    });
   }
 }

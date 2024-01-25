@@ -16,8 +16,10 @@ import { UsersService } from '../../../../core/services/users.service';
 import { UsersMockService } from '../../../../core/services/users-mock.service';
 import { MY_USER_TOKEN } from '../../../../core/injection-tokens';
 import { MatIconModule } from '@angular/material/icon';
+import { UserDetailComponent } from './pages/user-detail/user-detail.component';
+import { RouterModule } from '@angular/router';
 @NgModule({
-  declarations: [UsersComponent, UserFormComponent],
+  declarations: [UsersComponent, UserFormComponent, UserDetailComponent],
   imports: [
     CommonModule,
     MatTableModule,
@@ -27,6 +29,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     MatIconModule,
     ReactiveFormsModule,
+    RouterModule,
   ],
   exports: [UsersComponent],
   providers: [
