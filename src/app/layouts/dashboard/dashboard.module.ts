@@ -29,15 +29,25 @@ import { UserDetailComponent } from './pages/users/pages/user-detail/user-detail
     RxjsExampleModule,
     RxjsIntroduccionModule,
     MatListModule,
-    // dashboard
+    // /dashboard
     RouterModule.forChild([
       {
+        // /dashboard/home
         path: 'home',
         component: HomeComponent,
       },
       {
+        // /dashboard/users
         path: 'users',
         component: UsersComponent,
+      },
+      {
+        // /dashboard/products
+        path: 'products',
+        loadChildren: () =>
+          import('./pages/products/products.module').then(
+            (m) => m.ProductsModule
+          ),
       },
       {
         path: 'users/:id',

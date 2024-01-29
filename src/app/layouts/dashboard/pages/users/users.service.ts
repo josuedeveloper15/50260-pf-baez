@@ -1,8 +1,8 @@
 import { Inject, Injectable } from '@angular/core';
-import { MY_USER_TOKEN } from '../injection-tokens';
-import { User } from '../../layouts/dashboard/pages/users/models';
+import { MY_USER_TOKEN } from '../../../../core/injection-tokens';
+import { User } from './models';
 import { Observable, delay, of, tap } from 'rxjs';
-import { AlertsService } from './alerts.service';
+import { AlertsService } from '../../../../core/services/alerts.service';
 
 const ROLES_DB: string[] = ['ADMIN', 'USER'];
 
@@ -25,7 +25,7 @@ let USERS_DB: User[] = [
   },
 ];
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class UsersService {
   constructor(private alerts: AlertsService) {}
 

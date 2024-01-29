@@ -12,7 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
-import { UsersService } from '../../../../core/services/users.service';
+import { UsersService } from './users.service';
 import { UsersMockService } from '../../../../core/services/users-mock.service';
 import { MY_USER_TOKEN } from '../../../../core/injection-tokens';
 import { MatIconModule } from '@angular/material/icon';
@@ -33,7 +33,7 @@ import { RouterModule } from '@angular/router';
   ],
   exports: [UsersComponent],
   providers: [
-    // UsersService,
+    UsersService,
     // {
     //   provide: UsersService,
     //   useClass: UsersMockService,

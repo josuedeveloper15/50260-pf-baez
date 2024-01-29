@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from './models';
-import { UsersService } from '../../../../core/services/users.service';
+import { UsersService } from './users.service';
 import { LoadingService } from '../../../../core/services/loading.service';
 import { forkJoin } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';

@@ -20,6 +20,14 @@
         mat-list-item
         >Usuarios</a
       >
+      <a
+        #productsLink="routerLinkActive"
+        routerLinkActive
+        [activated]="productsLink.isActive"
+        routerLink="products"
+        mat-list-item
+        >Productos</a
+      >
       <a (click)="logout()" mat-list-item>Cerrar sesion</a>
     </mat-nav-list>
   </mat-drawer>

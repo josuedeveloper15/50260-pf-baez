@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { UsersService } from '../../../../../../core/services/users.service';
+import { UsersService } from '../../users.service';
 import { LoadingService } from '../../../../../../core/services/loading.service';
 
 @Component({
