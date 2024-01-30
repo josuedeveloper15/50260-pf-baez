@@ -12,6 +12,7 @@ import esAR from '@angular/common/locales/es-AR';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MY_USER_TOKEN } from './core/injection-tokens';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatNativeDateModule } from '@angular/material/core';
 
 registerLocaleData(es);
 registerLocaleData(esAR);
@@ -23,6 +24,7 @@ registerLocaleData(esAR);
     AppRoutingModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
+    MatNativeDateModule,
   ],
   providers: [
     {
