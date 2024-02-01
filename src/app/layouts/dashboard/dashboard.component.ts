@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,16 +10,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class DashboardComponent {
   showFiller = false;
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(private authService: AuthService) {}
 
   logout(): void {
-    // /dashboard/users
-    // this.router.navigate(['users'], { relativeTo: this.route })
-    localStorage.removeItem('access-token');
-    this.router.navigate(['auth', 'login'], {
-      // queryParams: {
-      //   hola: 'mundo',
-      // },
-    });
+    this.authService.logout();
   }
 }
