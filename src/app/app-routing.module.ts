@@ -15,9 +15,14 @@ const routes: Routes = [
         (m) => m.DashboardModule
       ),
   },
+  // {
+  //   path: 'auth/login',
+  //   component: LoginComponent,
+  // },
   {
-    path: 'auth/login',
-    component: LoginComponent,
+    path: 'auth',
+    loadChildren: () =>
+      import('./layouts/auth/auth.module').then((m) => m.AuthModule),
   },
   {
     path: '404',

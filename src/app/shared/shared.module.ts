@@ -7,12 +7,19 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { ValidationErrorsPipe } from './validation-errors.pipe';
 @NgModule({
-  declarations: [FullNamePipe, ResaltadoDirective, RepetirDirective],
+  declarations: [
+    FullNamePipe,
+    ResaltadoDirective,
+    RepetirDirective,
+    ValidationErrorsPipe,
+  ],
   imports: [CommonModule],
   exports: [
     FullNamePipe,
@@ -21,11 +28,13 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatTableModule,
     MatButtonModule,
     MatIconModule,
+    MatCardModule,
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
     MatDatepickerModule,
+    ValidationErrorsPipe,
   ],
 })
 export class SharedModule {}

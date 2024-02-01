@@ -39,7 +39,8 @@ import { UserDetailComponent } from './pages/users/pages/user-detail/user-detail
       {
         // /dashboard/users
         path: 'users',
-        component: UsersComponent,
+        loadChildren: () =>
+          import('./pages/users/users.module').then((m) => m.UsersModule),
       },
       {
         // /dashboard/products

@@ -18,6 +18,7 @@ import { MY_USER_TOKEN } from '../../../../core/injection-tokens';
 import { MatIconModule } from '@angular/material/icon';
 import { UserDetailComponent } from './pages/user-detail/user-detail.component';
 import { RouterModule } from '@angular/router';
+import { UsersRoutingModule } from './user-routing.module';
 @NgModule({
   declarations: [UsersComponent, UserFormComponent, UserDetailComponent],
   imports: [
@@ -29,7 +30,7 @@ import { RouterModule } from '@angular/router';
     MatButtonModule,
     MatIconModule,
     ReactiveFormsModule,
-    RouterModule,
+    UsersRoutingModule,
   ],
   exports: [UsersComponent],
   providers: [
