@@ -3,31 +3,15 @@ import { MY_USER_TOKEN } from '../../../../core/injection-tokens';
 import { User } from './models';
 import { Observable, delay, of, tap } from 'rxjs';
 import { AlertsService } from '../../../../core/services/alerts.service';
+import { HttpClient } from '@angular/common/http';
 
 const ROLES_DB: string[] = ['ADMIN', 'USER'];
 
-let USERS_DB: User[] = [
-  {
-    id: 1,
-    firstName: 'Naruto',
-    lastName: 'Uzumaki',
-    email: 'naru@mail.com',
-    password: '123456',
-    role: 'ADMIN',
-  },
-  {
-    id: 2,
-    firstName: 'Sasuke',
-    lastName: 'Uchiha',
-    email: 'sasu@mail.com',
-    password: '123456',
-    role: 'USER',
-  },
-];
+let USERS_DB: User[] = [];
 
 @Injectable()
 export class UsersService {
-  constructor(private alerts: AlertsService) {}
+  constructor(private alerts: AlertsService, private httpClient: HttpClient) {}
 
   getUserById(id: number | string): Observable<User | undefined> {
     return of(USERS_DB.find((user) => user.id == id)).pipe(delay(1000));
@@ -38,7 +22,7 @@ export class UsersService {
   }
 
   getUsers() {
-    return of(USERS_DB).pipe(delay(1000));
+    return this.httpClient.get<User[]>('http://localhost:3000/users');
   }
 
   createUser(payload: User) {

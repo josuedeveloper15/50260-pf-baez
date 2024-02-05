@@ -13,6 +13,7 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MY_USER_TOKEN } from './core/injection-tokens';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatNativeDateModule } from '@angular/material/core';
+import { HttpClientModule } from '@angular/common/http';
 
 registerLocaleData(es);
 registerLocaleData(esAR);
@@ -25,6 +26,7 @@ registerLocaleData(esAR);
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
     MatNativeDateModule,
+    HttpClientModule,
   ],
   providers: [
     {
