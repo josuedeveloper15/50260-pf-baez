@@ -4,6 +4,7 @@ import { UsersService } from './users.service';
 import { LoadingService } from '../../../../core/services/loading.service';
 import { forkJoin } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -39,6 +40,16 @@ export class UsersComponent implements OnInit {
       complete: () => {
         this.loadingService.setIsLoading(false);
       },
+      // error: (error) => {
+      //   if (error instanceof HttpErrorResponse) {
+      //     if (error.status === 500) {
+      //       alert('Error del servidor')
+      //     }
+      //     if (error.status === 404) {
+
+      //     }
+      //   }
+      // },
     });
   }
 
@@ -56,15 +67,13 @@ export class UsersComponent implements OnInit {
 
   onUserSubmitted(ev: User): void {
     this.loadingService.setIsLoading(true);
-    this.usersService
-      .createUser({ ...ev, id: new Date().getTime() })
-      .subscribe({
-        next: (users) => {
-          this.dataSource = [...users];
-        },
-        complete: () => {
-          this.loadingService.setIsLoading(false);
-        },
-      });
+    this.usersService.createUser(ev).subscribe({
+      next: (users) => {
+        this.dataSource = [...users];
+      },
+      complete: () => {
+        this.loadingService.setIsLoading(false);
+      },
+    });
   }
 }
