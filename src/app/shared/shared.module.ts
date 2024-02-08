@@ -13,12 +13,14 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ValidationErrorsPipe } from './validation-errors.pipe';
+import { ResaltadoDirective2 } from './resaltado2.directive';
 @NgModule({
   declarations: [
     FullNamePipe,
     ResaltadoDirective,
     RepetirDirective,
     ValidationErrorsPipe,
+    ResaltadoDirective2,
   ],
   imports: [CommonModule],
   exports: [
@@ -35,6 +37,7 @@ import { ValidationErrorsPipe } from './validation-errors.pipe';
     ReactiveFormsModule,
     MatDatepickerModule,
     ValidationErrorsPipe,
+    ResaltadoDirective2,
   ],
 })
 export class SharedModule {}

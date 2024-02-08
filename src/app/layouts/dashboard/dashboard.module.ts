@@ -16,9 +16,11 @@ import { UsersComponent } from './pages/users/users.component';
 import { MatListModule } from '@angular/material/list';
 import { UserDetailComponent } from './pages/users/pages/user-detail/user-detail.component';
 import { adminGuard } from '../../core/guards/admin.guard';
+import { SharedModule } from '../../shared/shared.module';
 @NgModule({
   declarations: [DashboardComponent],
   imports: [
+    SharedModule,
     CommonModule,
     MatSidenavModule,
     MatButtonModule,
