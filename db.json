@@ -4,9 +4,10 @@
       "id": "1",
       "firstName": "Naruto",
       "lastName": "Uzumaki",
-      "email": "naru@mailcom",
+      "email": "naru@mail.com",
       "password": "123456",
-      "role": "ADMIN"
+      "role": "ADMIN",
+      "token": "ab3drthdkd1"
     },
     {
       "id": "2",
@@ -14,7 +15,8 @@
       "lastName": "Uchiha",
       "email": "sasu@mail.com",
       "password": "123456",
-      "role": "USER"
+      "role": "USER",
+      "token": "ab3drthdkd2"
     },
     {
       "id": "c8fb",
@@ -22,7 +24,53 @@
       "lastName": "test",
       "email": "test@mail.com",
       "password": "12345",
-      "role": "ADMIN"
+      "role": "ADMIN",
+      "token": "ab3drthdkd3"
+    },
+    {
+      "id": "d57a",
+      "firstName": "maria",
+      "lastName": "lopez",
+      "email": "m@mail.com",
+      "password": "123456",
+      "role": "USER",
+      "token": " uZR84"
+    },
+    {
+      "id": "d57adfdfd",
+      "firstName": "maria",
+      "lastName": "lopez",
+      "email": "mtest@mail.com",
+      "password": "123456",
+      "role": "USER",
+      "token": " uZR8sdsdsds4"
+    },
+    {
+      "id": "cxvcxv",
+      "firstName": "maria",
+      "lastName": "lopez",
+      "email": "sdsds@mail.com",
+      "password": "123456",
+      "role": "USER",
+      "token": " sfsdfsdf"
+    },
+    {
+      "id": "gvfg43df",
+      "firstName": "maria",
+      "lastName": "lopez",
+      "email": "dsf45@mail.com",
+      "password": "123456",
+      "role": "USER",
+      "token": " sdsd"
+    },
+    {
+      "id": "bgfdhgf",
+      "firstName": "maria",
+      "lastName": "lopez",
+      "email": "hgfhfgh@mail.com",
+      "password": "123456",
+      "role": "USER",
+      "token": " sddsfrtysd"
     }
   ],
   "courses": []

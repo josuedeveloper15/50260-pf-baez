@@ -5,6 +5,7 @@ import { LoadingService } from '../../../../core/services/loading.service';
 import { forkJoin } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { PageEvent } from '@angular/material/paginator';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -12,8 +13,12 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class UsersComponent implements OnInit {
   displayedColumns: string[] = ['id', 'fullName', 'email', 'role', 'actions'];
-  dataSource: User[] = [];
   roles: string[] = [];
+
+  dataSource: User[] = [];
+  totalItems = 0;
+  pageSize = 5;
+  currentPage = 1;
 
   constructor(
     private usersService: UsersService,
@@ -31,11 +36,17 @@ export class UsersComponent implements OnInit {
     this.loadingService.setIsLoading(true);
     forkJoin([
       this.usersService.getRoles(),
-      this.usersService.getUsers(),
+      // this.usersService.getUsers(),
+      this.usersService.paginate(this.currentPage),
     ]).subscribe({
       next: (value) => {
         this.roles = value[0];
-        this.dataSource = value[1];
+
+        const paginationResult = value[1];
+        this.totalItems = paginationResult.items;
+        this.dataSource = paginationResult.data;
+
+        // this.dataSource = value[1];
       },
       complete: () => {
         this.loadingService.setIsLoading(false);
@@ -50,6 +61,17 @@ export class UsersComponent implements OnInit {
       //     }
       //   }
       // },
+    });
+  }
+
+  onPage(ev: PageEvent) {
+    this.currentPage = ev.pageIndex + 1;
+    this.usersService.paginate(this.currentPage, ev.pageSize).subscribe({
+      next: (paginateResult) => {
+        this.totalItems = paginateResult.items;
+        this.dataSource = paginateResult.data;
+        this.pageSize = ev.pageSize;
+      },
     });
   }
 

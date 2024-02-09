@@ -19,10 +19,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { UserDetailComponent } from './pages/user-detail/user-detail.component';
 import { RouterModule } from '@angular/router';
 import { UsersRoutingModule } from './user-routing.module';
+import { SharedModule } from '../../../../shared/shared.module';
 @NgModule({
   declarations: [UsersComponent, UserFormComponent, UserDetailComponent],
   imports: [
     CommonModule,
+    SharedModule,
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,

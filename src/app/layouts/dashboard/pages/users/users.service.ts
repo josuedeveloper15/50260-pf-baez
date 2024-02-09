@@ -5,6 +5,7 @@ import { Observable, catchError, delay, mergeMap, of, tap } from 'rxjs';
 import { AlertsService } from '../../../../core/services/alerts.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';
+import { Pagination } from '../../../../core/models/pagination';
 
 const ROLES_DB: string[] = ['ADMIN', 'USER'];
 
@@ -13,6 +14,17 @@ let USERS_DB: User[] = [];
 @Injectable()
 export class UsersService {
   constructor(private alerts: AlertsService, private httpClient: HttpClient) {}
+
+  generateString(length: number) {
+    const characters =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = ' ';
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  }
 
   getUserById(id: number | string): Observable<User | undefined> {
     return this.httpClient.get<User>(`${environment.apiURL}/users/${id}`);
@@ -24,9 +36,7 @@ export class UsersService {
 
   getUsers() {
     // let headers = new HttpHeaders();
-
     // headers = headers.append('HOLAMUNDO', localStorage.getItem('token') || '');
-
     return this.httpClient
       .get<User[]>(`${environment.apiURL}/users`, {
         // headers: headers,
@@ -39,11 +49,18 @@ export class UsersService {
       );
   }
 
+  paginate(page: number, perPage = 5) {
+    return this.httpClient.get<Pagination<User>>(
+      `${environment.apiURL}/users?_page=${page}&_per_page=${perPage}`
+    );
+  }
+
   createUser(payload: User) {
-    // USERS_DB.push(payload);
-    // return this.getUsers();
     return this.httpClient
-      .post<User>(`${environment.apiURL}/users`, payload)
+      .post<User>(`${environment.apiURL}/users`, {
+        ...payload,
+        token: this.generateString(15),
+      })
       .pipe(mergeMap(() => this.getUsers()));
   }
 

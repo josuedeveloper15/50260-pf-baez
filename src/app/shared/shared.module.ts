@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ValidationErrorsPipe } from './validation-errors.pipe';
 import { ResaltadoDirective2 } from './resaltado2.directive';
+import { MatPaginatorModule } from '@angular/material/paginator';
 @NgModule({
   declarations: [
     FullNamePipe,
@@ -37,6 +38,7 @@ import { ResaltadoDirective2 } from './resaltado2.directive';
     ReactiveFormsModule,
     MatDatepickerModule,
     ValidationErrorsPipe,
+    MatPaginatorModule,
     ResaltadoDirective2,
   ],
 })
