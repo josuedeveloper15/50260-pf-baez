@@ -19,14 +19,14 @@ export class Clase16ReduxComponent implements OnDestroy {
   constructor(private store: Store) {
     this.value$ = this.store.select(selectContadorValue);
 
-    this.contadorValueSubscription = this.store
-      .select(selectContadorValue)
-      .subscribe({
-        next: (value) => {
-          console.log('HOLA');
-          this.value = value;
-        },
-      });
+    // this.contadorValueSubscription = this.store
+    //   .select(selectContadorValue)
+    //   .subscribe({
+    //     next: (value) => {
+    //       console.log('HOLA');
+    //       this.value = value;
+    //     },
+    //   });
   }
 
   ngOnDestroy(): void {
@@ -35,5 +35,9 @@ export class Clase16ReduxComponent implements OnDestroy {
 
   incrementar(): void {
     this.store.dispatch(ContadorActions.incrementar());
+  }
+
+  decrementar(): void {
+    this.store.dispatch(ContadorActions.decrementar({ cantidad: 1 }));
   }
 }

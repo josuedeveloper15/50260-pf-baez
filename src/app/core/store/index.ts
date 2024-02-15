@@ -1,5 +1,10 @@
-import { contadorReducer, featureName } from './contador/reducers';
+import {
+  contadorReducer,
+  featureName as contadorFeatureName,
+} from './contador/reducers';
+import { featureName as authFeatureName, authReducer } from './auth/reducers';
 
 export const appReducers = {
-  [featureName]: contadorReducer,
+  [contadorFeatureName]: contadorReducer,
+  [authFeatureName]: authReducer,
 };

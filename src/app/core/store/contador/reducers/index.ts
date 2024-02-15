@@ -15,7 +15,14 @@ export const contadorReducer = createReducer<ContadorState>(
   initialState,
   on(ContadorActions.incrementar, (state) => {
     return {
+      ...state,
       value: state.value + 1,
+    };
+  }),
+  on(ContadorActions.decrementar, (state, action) => {
+    return {
+      ...state,
+      value: state.value - action.cantidad,
     };
   })
 );

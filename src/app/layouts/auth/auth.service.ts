@@ -6,6 +6,8 @@ import { Observable, delay, finalize, map, of, tap } from 'rxjs';
 import { LoadingService } from '../../core/services/loading.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
+import { Store } from '@ngrx/store';
+import { AuthActions } from '../../core/store/auth/actions';
 
 interface LoginData {
   email: null | string;
@@ -23,17 +25,16 @@ const MOCK_USER = {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  authUser: User | null = null;
-
   constructor(
     private router: Router,
     private alertsService: AlertsService,
     private loadingService: LoadingService,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private store: Store
   ) {}
 
   private setAuthUser(user: User): void {
-    this.authUser = user;
+    this.store.dispatch(AuthActions.setAuthUser({ user }));
     localStorage.setItem('token', user.token);
   }
 
@@ -55,7 +56,7 @@ export class AuthService {
   }
 
   logout(): void {
-    this.authUser = null;
+    this.store.dispatch(AuthActions.logout());
     this.router.navigate(['auth', 'login']);
     localStorage.removeItem('token');
   }
@@ -71,7 +72,7 @@ export class AuthService {
             this.setAuthUser(response[0]);
             return true;
           } else {
-            this.authUser = null;
+            this.store.dispatch(AuthActions.logout());
             localStorage.removeItem('token');
             return false;
           }
