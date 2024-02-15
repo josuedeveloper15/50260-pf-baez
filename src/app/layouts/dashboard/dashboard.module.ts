@@ -55,6 +55,14 @@ import { SharedModule } from '../../shared/shared.module';
           ),
       },
       {
+        // /dashboard/clase-16
+        path: 'clase-16',
+        loadChildren: () =>
+          import('./pages/clase-16-redux/clase-16-redux.module').then(
+            (m) => m.Clase16ReduxModule
+          ),
+      },
+      {
         path: 'users/:id',
         component: UserDetailComponent,
       },

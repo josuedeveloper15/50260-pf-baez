@@ -28,6 +28,14 @@
         mat-list-item
         >Productos</a
       >
+      <a
+        #clase16Link="routerLinkActive"
+        routerLinkActive
+        [activated]="clase16Link.isActive"
+        routerLink="clase-16"
+        mat-list-item
+        >Clase 16 Redux</a
+      >
       <a (click)="logout()" mat-list-item>Cerrar sesion</a>
     </mat-nav-list>
   </mat-drawer>
