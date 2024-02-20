@@ -9,7 +9,7 @@ import { SalesService } from '../sales.service';
 export class SalesEffects {
   loadSales$ = createEffect(() => {
     return this.actions$.pipe(
-      // Filtramos solamente las acciones que nos interesan, en este caso solamente las acciones de tipo loadSaless
+      // Filtramos solamente las acciones que nos interesan, en este caso solamente las acciones de tipo loadSales
       ofType(SalesActions.loadSales),
       concatMap(() =>
         /** An EMPTY observable only emits completion. Replace with your own observable API request */
@@ -22,6 +22,15 @@ export class SalesEffects {
       )
     );
   });
+
+  // loadSalesSucessOrFailure$ = createEffect(() => {
+  //   return this.actions$.pipe(
+  //     ofType(SalesActions.loadSalesSuccess, SalesActions.loadSalesFailure),
+  //     concatMap((action) => {
+  //       ///
+  //     })
+  //   );
+  // });
 
   constructor(private actions$: Actions, private salesService: SalesService) {}
 }

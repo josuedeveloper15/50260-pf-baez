@@ -1,19 +1,45 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { SalesService } from './sales.service';
 import { Store } from '@ngrx/store';
 import { SalesActions } from './store/sales.actions';
+import { selectSales, selectSalesIsLoading } from './store/sales.selectors';
+import { Observable, Subject, Subscription, takeUntil } from 'rxjs';
+import { Sale } from './models';
 
 @Component({
   selector: 'app-sales',
   templateUrl: './sales.component.html',
   styleUrl: './sales.component.scss',
 })
-export class SalesComponent {
-  sales$: any;
+export class SalesComponent implements OnDestroy {
+  // sales$: Observable<Sale[]>;
 
-  constructor(private salesService: SalesService, private store: Store) {
-    this.sales$ = this.salesService.getSales();
+  sales: Sale[] = [];
 
+  isLoading$: Observable<boolean>;
+
+  salesSubscripion?: Subscription;
+
+  destroyed$ = new Subject();
+
+  constructor(private store: Store) {
+    // this.sales$ = this.store.select(selectSales);
+
+    this.store
+      .select(selectSales)
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe({
+        next: (sales) => {
+          this.sales = sales;
+        },
+      });
+
+    this.isLoading$ = this.store.select(selectSalesIsLoading);
     this.store.dispatch(SalesActions.loadSales());
+  }
+
+  ngOnDestroy(): void {
+    this.destroyed$.next(true);
+    this.destroyed$.complete();
   }
 }

@@ -1,1 +1,5 @@
-<pre>{{ sales$ | async | json }}</pre>
+<div *ngIf="isLoading$ | async; else notLoading">CARGANDO...</div>
+
+<ng-template #notLoading>
+  <pre>{{ sales | json }}</pre>
+</ng-template>
