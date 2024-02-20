@@ -29,6 +29,14 @@
         >Productos</a
       >
       <a
+        #salesLink="routerLinkActive"
+        routerLinkActive
+        [activated]="salesLink.isActive"
+        routerLink="sales"
+        mat-list-item
+        >Ventas</a
+      >
+      <a
         #clase16Link="routerLinkActive"
         routerLinkActive
         [activated]="clase16Link.isActive"

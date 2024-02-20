@@ -23,7 +23,7 @@
       "firstName": "test",
       "lastName": "test",
       "email": "test@mail.com",
-      "password": "12345",
+      "password": "123456",
       "role": "ADMIN",
       "token": "ab3drthdkd3"
     },
@@ -73,5 +73,18 @@
       "token": " sddsfrtysd"
     }
   ],
-  "courses": []
+  "products": [
+    {
+      "id": 2,
+      "name": "Teclado Mecanico",
+      "createdAt": "2024-02-19T23:32:38.758Z"
+    }
+  ],
+  "sales": [
+    {
+      "id": 1,
+      "userId": "2",
+      "productId": 2
+    }
+  ]
 }

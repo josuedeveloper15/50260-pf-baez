@@ -63,6 +63,11 @@ import { SharedModule } from '../../shared/shared.module';
           ),
       },
       {
+        path: 'sales',
+        loadChildren: () =>
+          import('./pages/sales/sales.module').then((m) => m.SalesModule),
+      },
+      {
         path: 'users/:id',
         component: UserDetailComponent,
       },

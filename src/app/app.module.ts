@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { appReducers } from './core/store';
+import { EffectsModule } from '@ngrx/effects';
 
 registerLocaleData(es);
 registerLocaleData(esAR);
@@ -32,6 +33,7 @@ registerLocaleData(esAR);
     HttpClientModule,
     StoreModule.forRoot(appReducers, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    EffectsModule.forRoot([]),
   ],
   providers: [
     {
