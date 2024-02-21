@@ -15,6 +15,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ValidationErrorsPipe } from './validation-errors.pipe';
 import { ResaltadoDirective2 } from './resaltado2.directive';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [
     FullNamePipe,
@@ -35,6 +36,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
     ReactiveFormsModule,
     MatDatepickerModule,
     ValidationErrorsPipe,

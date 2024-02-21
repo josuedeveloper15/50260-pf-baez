@@ -5,6 +5,8 @@ import { SalesActions } from './store/sales.actions';
 import { selectSales, selectSalesIsLoading } from './store/sales.selectors';
 import { Observable, Subject, Subscription, takeUntil } from 'rxjs';
 import { Sale } from './models';
+import { MatDialog } from '@angular/material/dialog';
+import { SaleDialogComponent } from './components/sale-dialog/sale-dialog.component';
 
 @Component({
   selector: 'app-sales',
@@ -22,7 +24,7 @@ export class SalesComponent implements OnDestroy {
 
   destroyed$ = new Subject();
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private matDialog: MatDialog) {
     // this.sales$ = this.store.select(selectSales);
 
     this.store
@@ -36,6 +38,10 @@ export class SalesComponent implements OnDestroy {
 
     this.isLoading$ = this.store.select(selectSalesIsLoading);
     this.store.dispatch(SalesActions.loadSales());
+  }
+
+  createSale(): void {
+    this.matDialog.open(SaleDialogComponent);
   }
 
   ngOnDestroy(): void {

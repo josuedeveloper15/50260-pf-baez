@@ -4,6 +4,8 @@ import { catchError, map, concatMap } from 'rxjs/operators';
 import { Observable, EMPTY, of } from 'rxjs';
 import { SalesActions } from './sales.actions';
 import { SalesService } from '../sales.service';
+import { UsersService } from '../../users/users.service';
+import { ProductsService } from '../../products/products.service';
 
 @Injectable()
 export class SalesEffects {
@@ -23,6 +25,32 @@ export class SalesEffects {
     );
   });
 
+  loadBuyer$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(SalesActions.loadBuyers),
+      concatMap(() =>
+        this.usersService.getAllBuyers().pipe(
+          map((resp) => SalesActions.loadBuyersSuccess({ data: resp })),
+          catchError((error) => {
+            return of(SalesActions.loadBuyersFailure({ error }));
+          })
+        )
+      )
+    );
+  });
+
+  loadProducts$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(SalesActions.loadProducts),
+      concatMap(() => {
+        return this.productsService.getProducts().pipe(
+          map((resp) => SalesActions.loadProductsSuccess({ data: resp })),
+          catchError((error) => of(SalesActions.loadProductsFailure({ error })))
+        );
+      })
+    );
+  });
+
   // loadSalesSucessOrFailure$ = createEffect(() => {
   //   return this.actions$.pipe(
   //     ofType(SalesActions.loadSalesSuccess, SalesActions.loadSalesFailure),
@@ -32,5 +60,10 @@ export class SalesEffects {
   //   );
   // });
 
-  constructor(private actions$: Actions, private salesService: SalesService) {}
+  constructor(
+    private actions$: Actions,
+    private salesService: SalesService,
+    private usersService: UsersService,
+    private productsService: ProductsService
+  ) {}
 }

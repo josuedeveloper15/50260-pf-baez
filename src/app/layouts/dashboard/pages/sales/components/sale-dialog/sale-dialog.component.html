@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>Crear venta</h1>
+<div mat-dialog-content>
+  <form>
+    <mat-form-field>
+      <mat-label>Comprador</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let buyer of buyers$ | async">
+          {{ buyer.firstName }} {{ buyer.lastName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Producto</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let product of products$ | async">
+          {{ product.name }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button>Guardar</button>
+</div>

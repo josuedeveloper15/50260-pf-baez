@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../../../environments/environment';
 import { Sale } from './models';
-import { concatMap } from 'rxjs';
+import { catchError, concatMap, throwError } from 'rxjs';
 import { User } from '../users/models';
 
 @Injectable({ providedIn: 'root' })
@@ -20,9 +20,13 @@ export class SalesService {
     return this.http
       .get<User>(`${environment.apiURL}/users/${userId}`)
       .pipe(
-        concatMap((data) =>
-          this.http.get(`${environment.apiURL}/sales?userId=${data.id}`)
-        )
+        concatMap((user) =>
+          this.http.get(`${environment.apiURL}/sales?userId=${user.id}`)
+        ),
+        catchError((error) => {
+          alert('Ocurrio un error')
+          return throwError(() => error);
+        })
       );
   }
 }

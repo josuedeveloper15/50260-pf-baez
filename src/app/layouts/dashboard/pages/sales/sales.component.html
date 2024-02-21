@@ -1,5 +1,9 @@
 <div *ngIf="isLoading$ | async; else notLoading">CARGANDO...</div>
 
 <ng-template #notLoading>
+  <button (click)="createSale()" mat-flat-button type="button" color="primary">
+    Crear venta
+  </button>
+
   <pre>{{ sales | json }}</pre>
 </ng-template>

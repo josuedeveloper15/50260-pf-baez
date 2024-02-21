@@ -75,4 +75,10 @@ export class UsersService {
       .delete<User>(`${environment.apiURL}/users/${userID}`)
       .pipe(mergeMap(() => this.getUsers()));
   }
+
+  getAllBuyers(): Observable<User[]> {
+    return this.httpClient.get<User[]>(
+      `${environment.apiURL}/users?role=BUYER`
+    );
+  }
 }
