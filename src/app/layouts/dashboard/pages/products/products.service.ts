@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { delay, finalize, of } from 'rxjs';
 import { Product } from './models';
 import { LoadingService } from '../../../../core/services/loading.service';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../../environments/environment';
 
 let products: Product[] = [
   {
@@ -23,14 +25,16 @@ let products: Product[] = [
 
 @Injectable()
 export class ProductsService {
-  constructor(private loadingService: LoadingService) {}
+  constructor(
+    private loadingService: LoadingService,
+    private httpClient: HttpClient
+  ) {}
 
   getProducts() {
     this.loadingService.setIsLoading(true);
-    return of(products).pipe(
-      delay(1500),
-      finalize(() => this.loadingService.setIsLoading(false))
-    );
+    return this.httpClient
+      .get<Product[]>(`${environment.apiURL}/products`)
+      .pipe(finalize(() => this.loadingService.setIsLoading(false)));
   }
 
   createProduct(data: Product) {

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../../../environments/environment';
-import { Sale } from './models';
+import { CreateSaleData, Sale } from './models';
 import { catchError, concatMap, throwError } from 'rxjs';
 import { User } from '../users/models';
 
@@ -17,16 +17,18 @@ export class SalesService {
   }
 
   getSalesById(userId: string | number) {
-    return this.http
-      .get<User>(`${environment.apiURL}/users/${userId}`)
-      .pipe(
-        concatMap((user) =>
-          this.http.get(`${environment.apiURL}/sales?userId=${user.id}`)
-        ),
-        catchError((error) => {
-          alert('Ocurrio un error')
-          return throwError(() => error);
-        })
-      );
+    return this.http.get<User>(`${environment.apiURL}/users/${userId}`).pipe(
+      concatMap((user) =>
+        this.http.get(`${environment.apiURL}/sales?userId=${user.id}`)
+      ),
+      catchError((error) => {
+        alert('Ocurrio un error');
+        return throwError(() => error);
+      })
+    );
+  }
+
+  createSale(data: CreateSaleData) {
+    return this.http.post<Sale>(`${environment.apiURL}/sales`, data);
   }
 }

@@ -51,6 +51,25 @@ export class SalesEffects {
     );
   });
 
+  createSale$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(SalesActions.createSale),
+      concatMap((action) => {
+        return this.salesService.createSale(action.data).pipe(
+          map((resp) => SalesActions.createSaleSuccess({ data: resp })),
+          catchError((error) => of(SalesActions.createSaleFailure({ error })))
+        );
+      })
+    );
+  });
+
+  createSaleSuccess$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(SalesActions.createSaleSuccess),
+      map(() => SalesActions.loadSales())
+    );
+  });
+
   // loadSalesSucessOrFailure$ = createEffect(() => {
   //   return this.actions$.pipe(
   //     ofType(SalesActions.loadSalesSuccess, SalesActions.loadSalesFailure),

@@ -8,3 +8,8 @@ export interface Sale {
   user?: User;
   product?: Product;
 }
+
+export interface CreateSaleData {
+  userId: string | number | null;
+  productId: string | number | null;
+}

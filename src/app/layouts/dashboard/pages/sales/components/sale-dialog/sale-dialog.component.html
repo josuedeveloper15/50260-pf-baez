@@ -1,18 +1,21 @@
 <h1 mat-dialog-title>Crear venta</h1>
 <div mat-dialog-content>
-  <form>
+  <form [formGroup]="saleForm">
     <mat-form-field>
       <mat-label>Comprador</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let buyer of buyers$ | async">
+      <mat-select formControlName="userId">
+        <mat-option [value]="buyer.id" *ngFor="let buyer of buyers$ | async">
           {{ buyer.firstName }} {{ buyer.lastName }}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Producto</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let product of products$ | async">
+      <mat-select formControlName="productId">
+        <mat-option
+          [value]="product.id"
+          *ngFor="let product of products$ | async"
+        >
           {{ product.name }}</mat-option
         >
       </mat-select>
@@ -21,5 +24,5 @@
 </div>
 <div mat-dialog-actions>
   <button mat-button mat-dialog-close>Cancelar</button>
-  <button mat-button>Guardar</button>
+  <button mat-button (click)="onSubmit()">Guardar</button>
 </div>
